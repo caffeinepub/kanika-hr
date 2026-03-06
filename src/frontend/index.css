@@ -1,0 +1,285 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ── Font Faces ─────────────────────────────────────────────────── */
+@font-face {
+  font-family: "Cabinet Grotesk";
+  src: url("/assets/fonts/CabinetGrotesk-Variable.woff2") format("woff2");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Outfit";
+  src: url("/assets/fonts/Outfit-Variable.woff2") format("woff2");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* ── Design Tokens ──────────────────────────────────────────────── */
+@layer base {
+  :root {
+    --radius: 0.75rem;
+
+    /* Base surfaces */
+    --background: 0.985 0.003 285;
+    --foreground: 0.18 0.025 280;
+
+    /* Card / Popover */
+    --card: 1 0 0;
+    --card-foreground: 0.18 0.025 280;
+    --popover: 1 0 0;
+    --popover-foreground: 0.18 0.025 280;
+
+    /* Primary — Electric Violet */
+    --primary: 0.52 0.26 290;
+    --primary-foreground: 0.985 0 0;
+
+    /* Secondary — Soft Lavender */
+    --secondary: 0.93 0.04 290;
+    --secondary-foreground: 0.45 0.2 290;
+
+    /* Muted */
+    --muted: 0.94 0.015 285;
+    --muted-foreground: 0.55 0.04 285;
+
+    /* Accent — Hot Coral */
+    --accent: 0.65 0.22 28;
+    --accent-foreground: 0.985 0 0;
+
+    /* Destructive */
+    --destructive: 0.577 0.245 27.325;
+    --destructive-foreground: 0.985 0 0;
+
+    /* Border / Input / Ring */
+    --border: 0.88 0.02 285;
+    --input: 0.88 0.02 285;
+    --ring: 0.52 0.26 290;
+
+    /* Charts */
+    --chart-1: 0.52 0.26 290;
+    --chart-2: 0.65 0.22 28;
+    --chart-3: 0.62 0.18 160;
+    --chart-4: 0.78 0.18 80;
+    --chart-5: 0.55 0.2 220;
+
+    /* Sidebar */
+    --sidebar: 0.985 0.003 285;
+    --sidebar-foreground: 0.18 0.025 280;
+    --sidebar-primary: 0.52 0.26 290;
+    --sidebar-primary-foreground: 0.985 0 0;
+    --sidebar-accent: 0.93 0.04 290;
+    --sidebar-accent-foreground: 0.45 0.2 290;
+    --sidebar-border: 0.88 0.02 285;
+    --sidebar-ring: 0.52 0.26 290;
+
+    /* Custom brand tokens */
+    --violet: 0.52 0.26 290;
+    --coral: 0.65 0.22 28;
+    --mint: 0.62 0.18 160;
+    --amber: 0.78 0.18 80;
+    --indigo: 0.45 0.22 265;
+  }
+
+  .dark {
+    --background: 0.13 0.025 290;
+    --foreground: 0.97 0.01 280;
+    --card: 0.17 0.03 290;
+    --card-foreground: 0.97 0.01 280;
+    --popover: 0.17 0.03 290;
+    --popover-foreground: 0.97 0.01 280;
+    --primary: 0.65 0.26 290;
+    --primary-foreground: 0.1 0 0;
+    --secondary: 0.24 0.06 290;
+    --secondary-foreground: 0.9 0.03 285;
+    --muted: 0.22 0.04 290;
+    --muted-foreground: 0.65 0.04 285;
+    --accent: 0.68 0.22 28;
+    --accent-foreground: 0.985 0 0;
+    --destructive: 0.704 0.191 22.216;
+    --destructive-foreground: 0.205 0 0;
+    --border: 1 0 0 / 12%;
+    --input: 1 0 0 / 15%;
+    --ring: 0.65 0.26 290;
+    --chart-1: 0.65 0.26 290;
+    --chart-2: 0.68 0.22 28;
+    --chart-3: 0.65 0.18 160;
+    --chart-4: 0.8 0.18 80;
+    --chart-5: 0.58 0.2 220;
+    --sidebar: 0.17 0.03 290;
+    --sidebar-foreground: 0.97 0.01 280;
+    --sidebar-primary: 0.65 0.26 290;
+    --sidebar-primary-foreground: 0.985 0 0;
+    --sidebar-accent: 0.24 0.06 290;
+    --sidebar-accent-foreground: 0.9 0.03 285;
+    --sidebar-border: 1 0 0 / 12%;
+    --sidebar-ring: 0.65 0.26 290;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: "Outfit", sans-serif;
+  }
+}
+
+/* ── Typography ─────────────────────────────────────────────────── */
+.font-display {
+  font-family: "Cabinet Grotesk", sans-serif;
+}
+
+/* ── Animations ─────────────────────────────────────────────────── */
+@keyframes float-up {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-18px) rotate(8deg); }
+}
+
+@keyframes float-down {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(16px) rotate(-6deg); }
+}
+
+@keyframes float-side {
+  0%, 100% { transform: translateX(0px) rotate(0deg); }
+  50% { transform: translateX(12px) rotate(5deg); }
+}
+
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 12px 2px oklch(0.52 0.26 290 / 0.35); }
+  50% { box-shadow: 0 0 28px 8px oklch(0.52 0.26 290 / 0.65); }
+}
+
+@keyframes fade-in-up {
+  from { opacity: 0; transform: translateY(28px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes bounce-in {
+  0% { transform: scale(0.7); opacity: 0; }
+  60% { transform: scale(1.08); opacity: 1; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+@keyframes progress-fill {
+  from { width: 0; }
+  to { width: var(--progress-width, 72%); }
+}
+
+@keyframes count-up {
+  from { opacity: 0.3; }
+  to { opacity: 1; }
+}
+
+.animate-float-up { animation: float-up 5.5s ease-in-out infinite; }
+.animate-float-down { animation: float-down 6s ease-in-out infinite; }
+.animate-float-side { animation: float-side 4.5s ease-in-out infinite; }
+.animate-pulse-glow { animation: pulse-glow 2.5s ease-in-out infinite; }
+
+/* Scroll-triggered animations */
+.reveal {
+  opacity: 0;
+  transform: translateY(32px);
+  transition: opacity 0.65s cubic-bezier(0.22, 1, 0.36, 1),
+              transform 0.65s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.reveal-delay-1 { transition-delay: 0.1s; }
+.reveal-delay-2 { transition-delay: 0.2s; }
+.reveal-delay-3 { transition-delay: 0.3s; }
+.reveal-delay-4 { transition-delay: 0.4s; }
+.reveal-delay-5 { transition-delay: 0.5s; }
+.reveal-delay-6 { transition-delay: 0.6s; }
+
+/* Feature card hover */
+.feature-card {
+  transition: transform 0.28s cubic-bezier(0.34, 1.56, 0.64, 1),
+              box-shadow 0.28s ease;
+}
+
+.feature-card:hover {
+  transform: translateY(-6px) scale(1.015);
+  box-shadow: 0 20px 48px -8px oklch(0.52 0.26 290 / 0.2);
+}
+
+/* Gradient text */
+.gradient-text {
+  background: linear-gradient(135deg, oklch(0.52 0.26 290), oklch(0.65 0.22 28));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.gradient-text-alt {
+  background: linear-gradient(135deg, oklch(0.52 0.26 290), oklch(0.55 0.2 220), oklch(0.65 0.22 28));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Glass morphism nav */
+.glass-nav {
+  background: oklch(1 0 0 / 0.82);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid oklch(0.88 0.02 285 / 0.6);
+}
+
+/* Browser mockup chrome */
+.browser-chrome {
+  background: oklch(0.22 0.025 285);
+  border-radius: 12px 12px 0 0;
+  padding: 12px 16px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.browser-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+/* XP Badge chips */
+.xp-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 14px;
+  border-radius: 999px;
+  font-family: "Cabinet Grotesk", sans-serif;
+  font-weight: 700;
+  font-size: 0.875rem;
+  backdrop-filter: blur(8px);
+}
+
+/* Step connector line */
+.step-line {
+  position: absolute;
+  top: 28px;
+  left: calc(50% + 28px);
+  width: calc(100% - 56px);
+  height: 2px;
+  background: linear-gradient(90deg, oklch(0.52 0.26 290), oklch(0.65 0.22 28));
+}
